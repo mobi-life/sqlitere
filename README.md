@@ -6,7 +6,12 @@ This project uses lastest version of sqlite amalgamation v3.12.2 , you can repla
 https://github.com/liteglue/sqlite-amalgamation
 
 # Usages
-## Encryption:
+## Regular Experssion Compare 
+you can use REGEXP operator to compare a field with a regex string
+```sql
+SELECT FirstName FROM Persons WHERE LastName REGEXP '^abc'
+```
+## Encryption
 ### PRAGMA key
 - example usage: `PRAGMA key='passphrase';`
 
