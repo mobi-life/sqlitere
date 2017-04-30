@@ -23,11 +23,23 @@ SELECT FirstName FROM Persons WHERE LastName REGEXP '^abc'
 ## Encryption
 ### PRAGMA key
 - example usage: `PRAGMA key='passphrase';`
-
+```java
+SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
+db.execSQL("PRAGMA key = 'passphrase'");
+```
 ### PRAGMA rekey
 - example usage: `PRAGMA rekey='passphrase';`
+```java
+SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
+db.execSQL("PRAGMA key = 'current passphrase'");
+db.execSQL("PRAGMA rekey = 'new passphrase'");
+```
 - example of decrypting: `PRAGMA rekey='';`
-
+```java
+SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
+db.execSQL("PRAGMA key = 'current passphrase'");
+db.execSQL("PRAGMA rekey = ''");
+```
 ### Encrypting a new db - order 
 ```c
 open          // <-- db is still plain text
