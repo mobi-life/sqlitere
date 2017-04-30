@@ -1,4 +1,4 @@
-# sqlitere
+# SqliteRE (Regex-Encryption)
 Customized version of Sqlite library supporting REGEXP and Encryption for Android.
 This project is a mix/merge of three other projects that are listed below.
 
