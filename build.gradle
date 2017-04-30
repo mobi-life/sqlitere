@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+apply plugin: com.jfrog.bintray.gradle.BintrayPlugin
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+
+    sourceSets.main.jni.srcDirs = [] //disable automatic ndk-build call
+    sourceSets.main {
+        jniLibs.srcDir 'src/main/jniLibs'
+    }
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        ndk {
+            moduleName "libsqliteX"
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar','.so'])
+}
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            groupId 'com.mobilife.sqlitere'
+            artifactId 'sqlitere'
+            version '1.0.0'
+
+            // Release AAR, Sources, and JavaDoc
+            artifact "$buildDir/outputs/aar/sqlitere-release.aar"
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        flatDir {
+            dirs 'libs'
+        }
+        maven { url "https://jitpack.io" }
+    }
+}
