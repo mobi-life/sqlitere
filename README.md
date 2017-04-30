@@ -6,5 +6,4 @@ This project uses lastest version of sqlite amalgamation v3.12.2 , you can repla
 https://github.com/liteglue/sqlite-amalgamation
 
 # Usages
-	##Encryption Usage
-
+### Encryption:
