@@ -18,3 +18,33 @@ SELECT FirstName FROM Persons WHERE LastName REGEXP '^abc'
 ### PRAGMA rekey
 - example usage: `PRAGMA rekey='passphrase';`
 - example of decrypting: `PRAGMA rekey='';`
+
+### Encrypting a new db - order 
+```c
+open          // <-- db is still plain text
+key           // <-- db is now fully encrypted
+use as usual
+```
+
+### Opening an encrypted DB - order 
+```c
+open          // <-- db is fully encrypted
+key           // <-- db is still fully encrypted
+use as usual  // <-- read/written pages are fully encrypted and only decrypted in-memory
+```
+
+### Changing the key - order 
+```c
+open          // <-- db is fully encrypted
+key           // <-- db is still fully encrypted
+rekey         // <-- db is still fully encrypted
+use as usual  
+```
+
+### Decrypting - order 
+```c
+open              // <-- db is fully encrypted
+key               // <-- db is still fully encrypted
+rekey with null   // <-- db is now fully decrypted to plain text
+use as usual
+```
