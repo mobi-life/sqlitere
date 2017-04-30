@@ -4,8 +4,17 @@ This project is a mix/merge of three other projects that are listed below.
 
 This project uses lastest version of sqlite amalgamation v3.12.2 , you can replace it with the lastest version from here :
 https://github.com/liteglue/sqlite-amalgamation
+# How to build the native library
+- Point to the directory ```src/main/```
+- Run the ```ndk-build``` in the command prompt
+- move compiled native library from ```libs``` to ```jniLibs```
+# How to use
+Building this library project using gradle in command line or from Android Studio will produce ```.aar``` file , copy the sqlite.aar file to the ```libs``` directory of your own project, then add the line below to the dependencies section in the ```build.gradle``` :
+```
+compile ('com.mobilife.sqlitere:sqlitere@aar')
+```
+Now you just need to change ```import``` part of your code to ```import com.mobilife.sqlitere.database.sqlite.SQLiteDatabase;``` and anything else will remain exactly how you use normal android sqlite classes.
 
-# Usages
 ## Regular Experssion Compare 
 you can use REGEXP operator to compare a field with a regex string
 ```sql
