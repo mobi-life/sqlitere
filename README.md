@@ -2,8 +2,6 @@
 Customized version of Sqlite library supporting REGEXP and Encryption for Android.
 This project is a mix/merge of three other projects that are listed below.
 
-This project uses lastest version of sqlite amalgamation v3.12.2 , you can replace it with the lastest version from here :
-https://github.com/liteglue/sqlite-amalgamation
 # How to build the native library
 - Point to the directory ```src/main/```
 - Run the ```ndk-build``` in the command prompt
@@ -69,3 +67,20 @@ key               // <-- db is still fully encrypted
 rekey with null   // <-- db is now fully decrypted to plain text
 use as usual
 ```
+
+# References
+-Android native and java helper classes :
+
+https://sqlite.org/android/doc/trunk/www/index.wiki
+
+-Encryption Module :
+
+https://github.com/rindeal/SQLite3-Encryption
+
+-Regexp Module :
+
+https://github.com/litehelpers/Android-sqlite-native-driver-regexp-pcre
+
+-This project uses sqlite amalgamation v3.12.2 , you can replace it with the lastest version from here :
+
+https://github.com/liteglue/sqlite-amalgamation
